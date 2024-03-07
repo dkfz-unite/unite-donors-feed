@@ -18,7 +18,18 @@ public class DonorDataModel
     public bool? MtaProtected { get => _mtaProtected; set => _mtaProtected = value; }
 
     [JsonPropertyName("projects")]
-    public string[] Projects { get => Trim(_projects); set => _projects = value; }
+    public string[] Projects
+    {
+        get => {
+            if (_projects == null || _projects.Length == 0 || string.IsNullOrWhiteSpace(_projects[0])
+            {
+                return ["Other"];
+            }
+
+            return Trim(_projects);
+        }
+        set => _projects = value;
+    }
 
     [JsonPropertyName("studies")]
     public string[] Studies { get => Trim(_studies); set => _studies = value; }
