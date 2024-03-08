@@ -42,8 +42,8 @@ public class DonorIndexingTasksService : IndexingTaskService<Donor, int>
     {
         IterateEntities<Donor, int>(donor => keys.Contains(donor.Id), donor => donor.Id, donors =>
         {
-            CreateDonorIndexingTasks(donors);
             CreateProjectIndexingTasks(donors);
+            CreateDonorIndexingTasks(donors);
             CreateImageIndexingTasks(donors);
             CreateSpecimenIndexingTasks(donors);
             CreateVariantIndexingTasks(donors);
@@ -52,14 +52,14 @@ public class DonorIndexingTasksService : IndexingTaskService<Donor, int>
     }
 
 
-    protected override IEnumerable<int> LoadRelatedDonors(IEnumerable<int> keys)
-    {
-        return keys;
-    }
-
     protected override IEnumerable<int> LoadRelatedProjects(IEnumerable<int> keys)
     {
         return _donorsRepository.GetRelatedProjects(keys).Result;
+    }
+
+    protected override IEnumerable<int> LoadRelatedDonors(IEnumerable<int> keys)
+    {
+        return keys;
     }
 
     protected override IEnumerable<int> LoadRelatedImages(IEnumerable<int> keys)
