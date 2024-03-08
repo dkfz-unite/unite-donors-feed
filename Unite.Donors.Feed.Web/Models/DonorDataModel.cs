@@ -20,8 +20,8 @@ public class DonorDataModel
     [JsonPropertyName("projects")]
     public string[] Projects
     {
-        get => {
-            if (_projects == null || _projects.Length == 0 || string.IsNullOrWhiteSpace(_projects[0])
+        get {
+            if (_projects == null || _projects.Length == 0 || string.IsNullOrWhiteSpace(_projects[0]))
             {
                 return ["Other"];
             }
