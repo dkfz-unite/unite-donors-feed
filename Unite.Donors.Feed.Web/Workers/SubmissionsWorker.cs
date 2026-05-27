@@ -36,7 +36,8 @@ public class SubmissionsWorker : BackgroundService
             }
             catch (Exception exception)
             {
-                _logger.LogError("{error}", exception.GetShortMessage());
+                // _logger.LogError("{error}", exception.GetShortMessage());
+                _logger.LogError(exception, "An error occurred while handling submissions");
             }
             finally
             {
