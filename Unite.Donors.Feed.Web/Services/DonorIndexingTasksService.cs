@@ -76,29 +76,39 @@ public class DonorIndexingTasksService : IndexingTaskService<Donor, int>
         return _donorsRepository.GetRelatedSpecimens(keys).Result;
     }
 
+    // TODO: With new index structure omics data is not directly related to donors.
+    // Reindexing is required if the donor is removed, then omics feed indexer finds out
+    // wether related genes/proteins/variants should be removed as well if they don't have any other related donors.
+    // We should consider deleting related omics data in a different way.
+
     protected override IEnumerable<int> LoadRelatedGenes(IEnumerable<int> keys)
     {
-        return _donorsRepository.GetRelatedGenes(keys).Result;
+        return [];
+        // return _donorsRepository.GetRelatedGenes(keys).Result;
     }
 
     protected override IEnumerable<int> LoadRelatedProteins(IEnumerable<int> keys)
     {
-        return _donorsRepository.GetRelatedProteins(keys).Result;
+        return [];
+        // return _donorsRepository.GetRelatedProteins(keys).Result;
     }
 
     protected override IEnumerable<int> LoadRelatedSms(IEnumerable<int> keys)
     {
-        return _donorsRepository.GetRelatedVariants<SM.Variant>(keys).Result;
+        return [];
+        // return _donorsRepository.GetRelatedVariants<SM.Variant>(keys).Result;
     }
 
     protected override IEnumerable<int> LoadRelatedCnvs(IEnumerable<int> keys)
     {
-        return _donorsRepository.GetRelatedVariants<CNV.Variant>(keys).Result;
+        return [];
+        // return _donorsRepository.GetRelatedVariants<CNV.Variant>(keys).Result;
     }
 
     protected override IEnumerable<int> LoadRelatedSvs(IEnumerable<int> keys)
     {
-        return _donorsRepository.GetRelatedVariants<SV.Variant>(keys).Result;
+        return [];
+        // return _donorsRepository.GetRelatedVariants<SV.Variant>(keys).Result;
     }
 
     protected override IEnumerable<int> LoadRelatedCnvProfiles(IEnumerable<int> keys)
