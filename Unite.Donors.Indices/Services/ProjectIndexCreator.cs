@@ -19,7 +19,7 @@ using Unite.Donors.Indices.Services.Extensions;
 using Unite.Donors.Indices.Services.Mapping;
 using Unite.Essentials.Extensions;
 using Unite.Indices.Entities;
-using Unite.Indices.Entities.Basic.DataUser;
+using Unite.Indices.Entities.Basic;
 using Unite.Indices.Entities.Projects;
 using Unite.Indices.Entities.Projects.Stats;
 using Unite.Indices.Entities.Projects.Stats.Base;
