@@ -73,6 +73,7 @@ public class ProjectIndexCreator
         index.Users = CreateUserIndices(project.Id);
         index.Stats =  CreateStatsIndex(project.Id); // TODO: Improve performance caching input data
         index.Data = CreateDataIndex(project.Id);
+        index.IsPublic = project.IsPublic;
 
         return index;
     }
